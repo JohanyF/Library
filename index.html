@@ -9,68 +9,41 @@
 <body>
     <div class="container">
         <header class="header-container">
-            <h2>Library</h2>
-            <button>Add Book</button>
+            <h1>Virtual Library</h1>
+            <button class="add-btn">Add Book <span>+</span></button>
         </header>
         <main class="cards-container">
-            <div class="card">
-                <p>Title of Book</p>
-                <p>Author</p>
-                <p>pages</p>
-                <button type="button">Read</button>
-                <button type="button">Delete</button>
-            </div>
-            <div class="card">
-                <p>Title of Book</p>
-                <p>Author</p>
-                <p>pages</p>
-                <p>Read</p>
-            </div>
-            <div class="card">
-                <p>Title of Book</p>
-                <p>Author</p>
-                <p>pages</p>
-                <p>Read</p>
-            </div>
-            <div class="card">
-                <p>Title of Book</p>
-                <p>Author</p>
-                <p>pages</p>
-                <p>Read</p>
-            </div>
-            <div class="card">
-                <p>Title of Book</p>
-                <p>Author</p>
-                <p>pages</p>
-                <p>Read</p>
-            </div>
-            <div class="card">
-                <p>Title of Book</p>
-                <p>Author</p>
-                <p>pages</p>
-                <p>Read</p>
-            </div>
-            <div class="card">
-                <p>Title of Book</p>
-                <p>Author</p>
-                <p>pages</p>
-                <p>Read</p>
-            </div>
-            <div class="card">
-                <p>Title of Book</p>
-                <p>Author</p>
-                <p>pages</p>
-                <p>Read</p>
-            </div>
-            <div class="card">
-                <p>Title of Book</p>
-                <p>Author</p>
-                <p>pages</p>
-                <p>Read</p>
-            </div>
+
         </main>
         <footer>Footer</footer>
-    </div>
+        
+        </div>
+        <dialog open>
+            <form method="dialog">
+                <div class="text-container">
+                    <label for="title">Title: </label>
+                    <input type="text" name="title" id="title" placeholder="Enter Book Title">
+                </div>
+                <div class="text-container">
+                    <label for="author">Author: </label>
+                    <input type="text" name="author" id="author" placeholder="Enter Author Name">
+                </div>
+                <div class="text-container">
+                    <label for="pages">Total Pages: </label>
+                    <input type="number" name="pages" id="pages" placeholder="Enter the number of pages">
+                </div>
+                <div class="checkbox-container">
+                    <label for="read">Book Read?: </label>
+                    <input type="checkbox" name="read" id="read">
+                </div>
+
+                <div class="modal-btns">
+                    <button type="submit" class="submit-btn">Submit</button>
+                    <button type="button" class="cancel-btn">Cancel</button>
+                </div>
+
+            </form>
+        </dialog>
     <script src="script.js"></script>
 </body>
 </html>
