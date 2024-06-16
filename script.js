@@ -44,6 +44,7 @@ function createCard(obj) {
     card.appendChild(authorName);
 
     const totalPages = document.createElement("p");
+    totalPages.classList.add("flex-one");
     totalPages.textContent = `${obj.pages} pages`;
     card.appendChild(totalPages);
 
@@ -54,6 +55,7 @@ function createCard(obj) {
     const readBtn = document.createElement("button");
     readBtn.setAttribute("type", "button");
     readBtn.classList.add("card-btn");
+    console.log(obj);
     if(obj.read === true) {
         readBtn.textContent = "Read";
         readBtn.style.backgroundColor = READ_COLOR;
@@ -138,7 +140,7 @@ cancelBtn.addEventListener("click" , (event) => {
 
 submitBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
+    addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.checked);
     addBook();
     modal.close();
     document.bookForm.reset();
