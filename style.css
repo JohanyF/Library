@@ -19,10 +19,6 @@ h1 {
 .container {
     min-height: 100vh;
 
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-between; */
-
     display: grid;
     grid-template-rows: auto 1fr auto;
     align-items: start;
@@ -34,11 +30,6 @@ h1 {
     align-items: center;
     padding: 1.5rem;
     background-color: #768ad8;
-
-    /* position: fixed;
-    width: 100%;
-    background: lightblue; */
-
 }
 
 .cards-container {
@@ -86,7 +77,6 @@ h1 {
     font-size: 1rem;
 }
 
-/* Change this to the card text but will use p for now */
 p {
     font-size: 1.2rem;
 }
