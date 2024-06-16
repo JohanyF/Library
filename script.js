@@ -1,5 +1,8 @@
 const myLibrary = [];
 
+const READ_COLOR = "#a8ff69";
+const NOT_READ_COLOR = "#ff6969";
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -53,14 +56,28 @@ function createCard(obj) {
     readBtn.classList.add("card-btn");
     if(obj.read === true) {
         readBtn.textContent = "Read";
-        readBtn.style.backgroundColor = "#a8ff69"
+        readBtn.style.backgroundColor = READ_COLOR;
 
     } else {
         readBtn.textContent = "Not Read";
-        readBtn.style.backgroundColor = "#ff6969";
+        readBtn.style.backgroundColor = NOT_READ_COLOR;
 
     }
     cardBtns.appendChild(readBtn);
+
+    // Toggles between Read (true) and Not Read (false)
+    readBtn.addEventListener("click", () => {
+        obj.read = !obj.read;
+        if(obj.read === true) {
+            readBtn.textContent = "Read";
+            readBtn.style.backgroundColor = READ_COLOR;
+    
+        } else {
+            readBtn.textContent = "Not Read";
+            readBtn.style.backgroundColor = NOT_READ_COLOR;
+    
+        }
+    })
 
     const deleteBtn = document.createElement("button");
     deleteBtn.setAttribute("type", "button");
@@ -91,14 +108,12 @@ function updateBookIDs() {
 
 
 let testBook = new Book("1984", "George Orwell", 328, true);
-let testBook2 = new Book("1985", "George Orwell", 328, false);
-let testBook3 = new Book("1986", "George Orwell", 328, false);
-let testBook4 = new Book("1987", "George Orwell", 328, true);
+let testBook2 = new Book("The Strange Case of Origami Yoda", "Tom Angleberger", 141, true);
+let testBook3 = new Book("Diary of a Wimpy Kid", "Jeff Kinney", 221, false);
 
 myLibrary.push(testBook);
 myLibrary.push(testBook2);
 myLibrary.push(testBook3);
-myLibrary.push(testBook4);
 
 addPreLoadedBooks();
 
