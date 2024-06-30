@@ -115,14 +115,6 @@ function updateBookIDs() {
     })  
 }
 
-
-
-// const library = new Library();
-
-// library.addBookToLibrary("1984", "George Orwell", 328, true);
-// library.addBookToLibrary("The Strange Case of Origami Yoda", "Tom Angleberger", 141, true);
-// library.addBookToLibrary("Diary of a Wimpy Kid", "Jeff Kinney", 221, false);
-
 const modal = document.querySelector("#modal");
 const addBtn = document.querySelector(".add-btn");
 const submitBtn = document.querySelector(".submit-btn")
