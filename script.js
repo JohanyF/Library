@@ -3,11 +3,20 @@ const myLibrary = [];
 const READ_COLOR = "#a8ff69";
 const NOT_READ_COLOR = "#ff6969";
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+// function Book(title, author, pages, read) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.read = read;
+// }
+
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -146,11 +155,7 @@ submitBtn.addEventListener("click", (event) => {
     document.bookForm.reset();
 })
 
+// Create a class for Library & Book
+// Only include classes that impact the library and not the UI
 
-
-
-
-
-
-
-
+// Then have functions that deal with the UI
