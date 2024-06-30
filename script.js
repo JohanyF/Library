@@ -1,14 +1,5 @@
-const myLibrary = [];
-
 const READ_COLOR = "#a8ff69";
 const NOT_READ_COLOR = "#ff6969";
-
-// function Book(title, author, pages, read) {
-//     this.title = title;
-//     this.author = author;
-//     this.pages = pages;
-//     this.read = read;
-// }
 
 class Book {
     constructor(title, author, pages, read) {
@@ -19,28 +10,35 @@ class Book {
     }
 }
 
-function addBookToLibrary(title, author, pages, read) {
-    let myBook = new Book(title, author, pages, read);
-    myLibrary.push(myBook);
-}
+class Library {
+    constructor() {
+        this.myLibrary = []
+    }
 
-// Create a function that displays all of the books that are already preloaded in the array
-function addPreLoadedBooks() {
-    myLibrary.forEach((book) => {
-        createCard(book);
-    })
-}
+    get getlibraryArr() {
+        return this.myLibrary;
+    }
 
-// Create a function that displays the book that was added to the array after it was added to the array
-function addBook() {
-    createCard(myLibrary[myLibrary.length-1]);
+    addBookToLibrary(title, author, pages, read) {
+        let myBook = new Book(title, author, pages, read);
+        this.myLibrary.push(myBook);
+        createCard(this.myLibrary[this.myLibrary.length-1]);
+    }
+    
+    // Create a function that displays all of the books that are already preloaded in the array
+    addPreLoadedBooks() {
+        this.myLibrary.forEach((book) => {
+            createCard(book);
+        })
+    }
+    
 }
 
 function createCard(obj) {
     const cardContainer = document.querySelector(".cards-container");
     const card = document.createElement("div");
     card.classList.add("card");
-    card.setAttribute('id', myLibrary.indexOf(obj));
+    card.setAttribute('id', library.getlibraryArr.indexOf(obj));
 
     cardContainer.appendChild(card);
 
@@ -64,7 +62,7 @@ function createCard(obj) {
     const readBtn = document.createElement("button");
     readBtn.setAttribute("type", "button");
     readBtn.classList.add("card-btn");
-    console.log(obj);
+    // console.log(obj);
     if(obj.read === true) {
         readBtn.textContent = "Read";
         readBtn.style.backgroundColor = READ_COLOR;
@@ -100,9 +98,9 @@ function createCard(obj) {
 
     // Delete book 
     deleteBtn.addEventListener("click", () => {
-        const removeCard = document.getElementById(`${myLibrary.indexOf(obj)}`);
+        const removeCard = document.getElementById(`${library.getlibraryArr.indexOf(obj)}`);
         removeCard.remove();
-        myLibrary.splice(myLibrary.indexOf(obj), 1);
+        library.getlibraryArr.splice(library.getlibraryArr.indexOf(obj), 1);
         updateBookIDs();
     })
 
@@ -118,15 +116,12 @@ function updateBookIDs() {
 }
 
 
-let testBook = new Book("1984", "George Orwell", 328, true);
-let testBook2 = new Book("The Strange Case of Origami Yoda", "Tom Angleberger", 141, true);
-let testBook3 = new Book("Diary of a Wimpy Kid", "Jeff Kinney", 221, false);
 
-myLibrary.push(testBook);
-myLibrary.push(testBook2);
-myLibrary.push(testBook3);
+// const library = new Library();
 
-addPreLoadedBooks();
+// library.addBookToLibrary("1984", "George Orwell", 328, true);
+// library.addBookToLibrary("The Strange Case of Origami Yoda", "Tom Angleberger", 141, true);
+// library.addBookToLibrary("Diary of a Wimpy Kid", "Jeff Kinney", 221, false);
 
 const modal = document.querySelector("#modal");
 const addBtn = document.querySelector(".add-btn");
@@ -145,17 +140,20 @@ addBtn.addEventListener("click", () => {
 cancelBtn.addEventListener("click" , (event) => {
     event.preventDefault();
     modal.close();
+    document.bookForm.reset();
 })
 
 submitBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.checked);
-    addBook();
+    library.addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.checked);
     modal.close();
     document.bookForm.reset();
 })
 
-// Create a class for Library & Book
-// Only include classes that impact the library and not the UI
 
-// Then have functions that deal with the UI
+
+const library = new Library();
+
+library.addBookToLibrary("1984", "George Orwell", 328, true);
+library.addBookToLibrary("The Strange Case of Origami Yoda", "Tom Angleberger", 141, true);
+library.addBookToLibrary("Diary of a Wimpy Kid", "Jeff Kinney", 221, false);
