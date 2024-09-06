@@ -132,3 +132,13 @@ form {
 .flex-one {
     flex: 1;
 }
+
+input:invalid {
+    outline: red solid 3px;
+}
+
+input[type="text"]:valid, 
+input[type="number"]:valid {
+    outline: green solid 3px;
+}
+
