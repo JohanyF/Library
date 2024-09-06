@@ -131,15 +131,42 @@ cancelBtn.addEventListener("click", (event) => {
 });
 
 submitBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  library.addBookToLibrary(
-    titleInput.value,
-    authorInput.value,
-    pagesInput.value,
-    readInput.checked
-  );
-  modal.close();
-  document.bookForm.reset();
+  // Form Validation
+  if (titleInput.validity.valueMissing) {
+    titleInput.setCustomValidity("Expecting a title");
+    titleInput.reportValidity();
+    event.preventDefault();
+  } else if (authorInput.validity.valueMissing) {
+    authorInput.setCustomValidity("Expecting Author Name!");
+    authorInput.reportValidity();
+    event.preventDefault();
+  } else if (pagesInput.validity.valueMissing) {
+    pagesInput.setCustomValidity("Expecting Page Number!");
+    pagesInput.reportValidity();
+    event.preventDefault();
+  } else {
+    event.preventDefault();
+    library.addBookToLibrary(
+      titleInput.value,
+      authorInput.value,
+      pagesInput.value,
+      readInput.checked
+    );
+    modal.close();
+    document.bookForm.reset();
+  }
+});
+
+titleInput.addEventListener("input", () => {
+  titleInput.setCustomValidity("");
+});
+
+authorInput.addEventListener("input", () => {
+  authorInput.setCustomValidity("");
+});
+
+pagesInput.addEventListener("input", () => {
+  pagesInput.setCustomValidity("");
 });
 
 const library = new Library();
